@@ -2,7 +2,7 @@
 
 <ul>
 
-<li> Run command  </li> <br>
+<li> Clone this repository. Run command  </li> <br>
 
 > npm i 
 
