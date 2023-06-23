@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="api.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <h2><i class="fa fa-map-marker"></i><span id="location"></span></h2>
+                <h6 id="weather"></h6>
+                <h4><span id="temp"></span><sup>o</sup>C</h4>
+                <img src="" id="icon">
+                <button onclick="window.location.reload()" class="refresh"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        link = "https://api.openweathermap.org/data/2.5/weather?q=Bairagarh,in&APPID=3e1775c1365b9a56c9562ad0799e2b27";
+        var req = new XMLHttpRequest();
+        req.open('GET', link);
+        req.onload = function(){
+            var data = JSON.parse(this.response);
+            console.log(data);
+            document.getElementById("location").innerHTML = data.name;
+            document.getElementById("weather").innerHTML = data.weather[0].description;
+            document.getElementById("temp").innerHTML = Math.round(data.main.temp-273.15);
+            document.getElementById("icon").src = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+        }
+        if(req.status >= 200 && req.status < 400){
+            var temp = data.main.temp;
+        }
+        else{
+            console.log("Data unavailable");
+        }
+        req.send();
+    </script>
+</html>
