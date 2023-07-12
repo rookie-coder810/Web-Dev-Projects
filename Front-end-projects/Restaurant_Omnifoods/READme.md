@@ -1,4 +1,4 @@
-## Checkout this beautiful front-end website.
+## Front-end website.
 
 Built using:
 <ul>
